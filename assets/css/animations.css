@@ -1,0 +1,100 @@
+/* ── ANIMATIONS: View transitions, stagger, hover lifts, pulse ── */
+
+/* ── VIEW TRANSITIONS ────────────────────────────── */
+.view-enter {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.view-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── STAGGER CHILDREN ────────────────────────────── */
+.stagger > *:nth-child(1)  { animation-delay: 0ms; }
+.stagger > *:nth-child(2)  { animation-delay: 40ms; }
+.stagger > *:nth-child(3)  { animation-delay: 80ms; }
+.stagger > *:nth-child(4)  { animation-delay: 120ms; }
+.stagger > *:nth-child(5)  { animation-delay: 160ms; }
+.stagger > *:nth-child(6)  { animation-delay: 200ms; }
+.stagger > *:nth-child(7)  { animation-delay: 240ms; }
+.stagger > *:nth-child(8)  { animation-delay: 280ms; }
+
+.stagger-fade > * {
+  animation: fadeSlideUp 0.3s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PULSE DOT ───────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--ok); }
+  50%       { opacity: 0.6; box-shadow: 0 0 3px var(--ok); }
+}
+
+/* ── PULSE RED ───────────────────────────────────── */
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(227,6,19,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(227,6,19,0); }
+}
+
+/* ── SCORE BAR FILL ──────────────────────────────── */
+@keyframes barFill {
+  from { width: 0%; }
+}
+.kpi-bar-fill   { animation: barFill 0.8s ease 0.2s both; }
+.score-bar-fill { animation: barFill 0.8s ease 0.3s both; }
+.funnel-bar-fill{ animation: barFill 0.8s ease 0.4s both; }
+
+/* ── CARD HOVER LIFT ─────────────────────────────── */
+.dept-card      { transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+.kpi-tile       { transition: border-color 0.15s, box-shadow 0.15s; }
+.kpi-tile:hover { border-color: rgba(244,242,238,0.15); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+.journey-card   { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.journey-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
+
+/* ── PAGE LOAD ───────────────────────────────────── */
+#smc-app {
+  animation: appFadeIn 0.4s ease;
+}
+@keyframes appFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── TOPBAR BRAND SHIMMER ────────────────────────── */
+@keyframes shimmer {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+.brand-tagline {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ── ALERT CARD ENTRY ────────────────────────────── */
+.alert-card {
+  animation: alertIn 0.25s ease both;
+}
+@keyframes alertIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── JOURNEY STEP HOVER ──────────────────────────── */
+.journey-step-cell {
+  transition: background 0.15s;
+}
+
+/* ── INTEGRATION CARD ────────────────────────────── */
+.integration-card {
+  transition: border-color 0.15s, background 0.15s;
+}
+.integration-card:hover {
+  background: var(--c4);
+  border-color: rgba(244,242,238,0.12);
+}

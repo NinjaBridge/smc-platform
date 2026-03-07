@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMC Unified Intelligence Platform</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Barlow+Condensed:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Platform CSS -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <!-- Clerk Auth SDK v5 -->
+  <script async crossorigin="anonymous"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@5/dist/clerk.browser.js"
+    data-clerk-publishable-key="pk_live_Y2xlcmsua25jb2NwYS1iYXlhcmVhLmNvbSQ">
+  </script>
+</head>
+<body>
+<div id="smc-app">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <!-- SMC Shield Emblem -->
+      <svg class="brand-emblem" viewBox="0 0 40 40" fill="none">
+        <path d="M20 3L35 9L35 24Q35 34 20 38Q5 34 5 24L5 9Z"
+              fill="rgba(227,6,19,0.06)" stroke="#E30613" stroke-width="1.5"/>
+        <line x1="20" y1="3" x2="20" y2="38" stroke="#E30613" stroke-width="0.75" opacity="0.5"/>
+        <line x1="5" y1="20" x2="35" y2="20" stroke="#E30613" stroke-width="0.75" opacity="0.5"/>
+        <text x="20" y="17" text-anchor="middle"
+              font-family="'Bebas Neue',sans-serif" font-size="8" fill="#E30613" letter-spacing="0.5">SMC</text>
+        <text x="20" y="28" text-anchor="middle"
+              font-family="'Bebas Neue',sans-serif" font-size="5.5" fill="#D4A843" letter-spacing="0.3">EST. 2007</text>
+      </svg>
+      <div class="brand-text">
+        <div class="brand-name">Sierra Madre Collection</div>
+        <div class="brand-tagline">Unified Intelligence Platform</div>
+      </div>
+    </div>
+
+    <div class="topbar-divider"></div>
+
+    <!-- NAVIGATION — no inline onclick; router.js binds via addEventListener -->
+    <nav class="topbar-nav" id="main-nav">
+      <a class="nav-link active" href="#command"     data-view="#command">Command Center</a>
+      <a class="nav-link"        href="#departments" data-view="#departments">Departments</a>
+      <a class="nav-link"        href="#journey"     data-view="#journey">Customer Journey</a>
+      <a class="nav-link"        href="#operations"  data-view="#operations">Operations</a>
+    </nav>
+
+    <!-- RIGHT SIDE -->
+    <div class="topbar-right">
+      <div class="sys-status">
+        <div class="sys-dot"></div>
+        <span>All Systems Operational</span>
+      </div>
+      <div class="location-tag">Eagle Rock, CA · Shopify Live</div>
+      <div class="clock" id="clock">—</div>
+      <span id="user-name" style="font-family:var(--font-condensed);font-size:12px;color:var(--text-3);"></span>
+      <div id="clerk-user-button"></div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEW CONTAINER -->
+  <main id="main-content" class="main-content"></main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-brand"><span class="red">SMC</span> · Sierra Madre Collection</div>
+    <div class="footer-meta">1669 Colorado Blvd · Eagle Rock · Los Angeles CA 90041 · Est. 2007 · ASAP Digital Platforms · KnCO IT Ops · CR-001</div>
+  </footer>
+
+</div>
+
+<!-- DATA LAYER (mockup — no live credentials or internal URLs) -->
+<script src="assets/js/data/departments.js"></script>
+<script src="assets/js/data/journey.js"></script>
+<script src="assets/js/data/kpis.js"></script>
+<script src="assets/js/data/alerts.js"></script>
+<script src="assets/js/data/automations.js"></script>
+
+<!-- APP CORE -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/views/command.js"></script>
+<script src="assets/js/views/departments.js"></script>
+<script src="assets/js/views/journey.js"></script>
+<script src="assets/js/views/operations.js"></script>
+<script src="assets/js/router.js"></script>
+
+<!-- AUTH — must load last; triggers router after auth confirmed -->
+<script src="assets/js/clerk-init.js"></script>
+</body>
+</html>
