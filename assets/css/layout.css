@@ -232,3 +232,8 @@
 .mt-2xl { margin-top: var(--space-2xl); }
 .mb-lg  { margin-bottom: var(--space-lg); }
 .mb-xl  { margin-bottom: var(--space-xl); }
+
+/* ── PRINT PROTECTION (P3 · Security Review 2026-03-07) ── */
+@media print {
+  body { display: none !important; }
+}
