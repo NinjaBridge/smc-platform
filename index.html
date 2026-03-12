@@ -73,7 +73,7 @@
     await clerk.load();
 
     if (clerk.user) {
-      window.location.href = '/dashboard.html';
+      window.location.href = '/dashboard';
       return;
     }
 
@@ -97,7 +97,7 @@
           footerAction:{ color: 'rgba(244,242,238,0.35)' },
         }
       },
-      redirectUrl: '/dashboard.html',
+      redirectUrl: '/dashboard',
     });
   });
 </script>
