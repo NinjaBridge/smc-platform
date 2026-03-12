@@ -65,7 +65,10 @@
       <div class="location-tag">Eagle Rock, CA · Shopify Live</div>
       <div class="clock" id="clock">—</div>
       <span id="user-name" style="font-family:var(--font-condensed);font-size:12px;color:var(--text-3);"></span>
-      <a href="https://bridge.kncocpa-bayarea.com" class="portal-link" title="Back to portal selector">⬡ Portal</a>
+      <!-- Admin-gated actions injected by clerk-init.js (Admin Console + Invite User) -->
+      <div id="admin-actions" style="display:flex;align-items:center;gap:8px;"></div>
+      <!-- Sign Out — always visible, calls clerk.signOut() → bridge portal -->
+      <button id="sign-out-btn" class="portal-link" title="Sign out">⏻ Sign Out</button>
       <div id="clerk-user-button"></div>
     </div>
   </header>

@@ -110,6 +110,15 @@
   color: var(--text-1);
   border-color: rgba(244,242,238,0.25);
 }
+.portal-link--invite {
+  color: var(--smc-gold);
+  border-color: rgba(212,168,67,0.25);
+}
+.portal-link--invite:hover {
+  color: var(--smc-gold);
+  border-color: rgba(212,168,67,0.6);
+  background: rgba(212,168,67,0.06);
+}
 
 .sys-status {
   display: flex; align-items: center; gap: 6px;
