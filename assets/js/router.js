@@ -1,6 +1,7 @@
 // assets/js/router.js
 // SMC Unified Intelligence Platform — Hash-based SPA routing
 // CR-001 · 2026-03-07 · ASAP Digital Platforms · KnCO IT Ops
+// CR-211 · 2026-03-12: pushState back/forward navigation
 
 const VIEWS = {
   '#command':     renderCommand,
@@ -9,7 +10,7 @@ const VIEWS = {
   '#operations':  renderOperations,
 };
 
-function navigate(hash) {
+function navigate(hash, replace) {
   const targetHash = hash || '#command';
 
   // Update nav active state
@@ -32,12 +33,16 @@ function navigate(hash) {
     requestAnimationFrame(() => main.classList.add('view-visible'));
   });
 
-  // Update URL hash without page reload
-  history.replaceState(null, '', targetHash);
+  // Push to history so browser back/forward works; replace on initial load and popstate
+  if (replace) {
+    history.replaceState(null, '', targetHash);
+  } else {
+    history.pushState(null, '', targetHash);
+  }
 }
 
-// Listen for hash changes (browser back/forward)
-window.addEventListener('hashchange', () => navigate(window.location.hash || '#command'));
+// Browser back/forward button — popstate fires with the restored state
+window.addEventListener('popstate', () => navigate(window.location.hash || '#command', true));
 
 // Bind nav links via addEventListener (no inline onclick — CB-H02 compliance)
 function bindNavLinks() {
@@ -52,5 +57,5 @@ function bindNavLinks() {
 // Initial load — deferred until Clerk auth confirms user
 window._routerReady = function() {
   bindNavLinks();
-  navigate(window.location.hash || '#command');
+  navigate(window.location.hash || '#command', true); // replace on initial load
 };

@@ -24,7 +24,7 @@ window.addEventListener('load', async () => {
 
   // Redirect to login if not authenticated
   if (!clerk.user) {
-    window.location.href = '/index.html';
+    window.location.href = '/';
     return;
   }
 
