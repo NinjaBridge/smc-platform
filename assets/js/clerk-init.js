@@ -40,11 +40,17 @@ window.addEventListener('load', async () => {
   const userButtonEl = document.getElementById('clerk-user-button');
   if (userButtonEl) {
     clerk.mountUserButton(userButtonEl, {
+      afterSignOutUrl: 'https://bridge.kncocpa-bayarea.com',
       appearance: {
         variables: {
           colorPrimary:    '#E30613',
           colorBackground: '#1C1F22',
           colorText:       '#F4F2EE',
+        },
+        elements: {
+          // Ensure dropdown escapes sticky header stacking context (DEF-0013 fix)
+          userButtonPopoverCard: { zIndex: 9999 },
+          userButtonPopoverRootBox: { zIndex: 9999 },
         }
       }
     });
